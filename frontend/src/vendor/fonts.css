@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Inter";
+  src: url(../fonts/Inter-Regular/Inter-Regular.woff2) format("woff2"),
+    url(../fonts/Inter-Regular/Inter-Regular.woff) format("woff"),
+    url(../fonts/Inter-Regular/Inter-Regular.ttf) format("truetype"),
+    url(../fonts/Inter-Regular/Inter-Regular.eot) format("eot");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url(../fonts/Inter-Medium/Inter-Medium.woff2) format("woff2"),
+    url(../fonts/Inter-Medium/Inter-Medium.woff) format("woff"),
+    url(../fonts/Inter-Medium/Inter-Medium.ttf) format("truetype"),
+    url(../fonts/Inter-Medium/Inter-Medium.eot) format("eot");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url(../fonts/Inter-Black/Inter-Black.woff2) format("woff2"),
+    url(../fonts/Inter-Black/Inter-Black.woff) format("woff"),
+    url(../fonts/Inter-Black/Inter-Black.ttf) format("truetype"),
+    url(../fonts/Inter-Black/Inter-Black.eot) format("eot");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}

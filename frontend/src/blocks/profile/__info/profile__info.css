@@ -1,0 +1,18 @@
+.profile__info {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-left: 29px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .profile__info {
+    margin: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+    align-self: center;
+  }
+}

@@ -1,0 +1,10 @@
+.page {
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+}

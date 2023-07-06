@@ -1,0 +1,33 @@
+.profile__container-avatar {
+  position: relative;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-style: none;
+  background-color: black;
+}
+
+.profile__container-avatar:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.profile__container-avatar:before {
+  position: absolute;
+  display: block;
+  content: "";
+  top: 47px;
+  left: 47px;
+  background: url(../../../images/logo/carandash.svg) no-repeat center;
+  width: 26px;
+  height: 26px;
+  z-index: 30;
+
+  opacity: 0;
+}
+.profile__container-avatar:hover::before {
+  visibility: visible;
+  opacity: 1;
+}

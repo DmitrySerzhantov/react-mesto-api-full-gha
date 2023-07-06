@@ -1,0 +1,14 @@
+.cards__like {
+  padding: 0;
+  background-image: url(../../../images/logo/Vectorserce.svg);
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  width: 22px;
+  height: 19px;
+  cursor: pointer;
+}
+
+.cards__like:hover {
+  opacity: 0.5;
+}
+

@@ -1,0 +1,20 @@
+.popup__form {
+  display: flex;
+  flex-direction: column;
+  max-width: 358px;
+  margin: 45px auto 0;
+  padding-bottom: 23px;
+}
+
+@media (max-width: 600px) {
+  .popup__form {
+    max-width: 238px;
+    justify-content: center;
+    margin-top: 73px;
+  }
+}
+@media (min-width: 600px) {
+  .popup__form {
+    padding-bottom: 35px;
+  }
+}

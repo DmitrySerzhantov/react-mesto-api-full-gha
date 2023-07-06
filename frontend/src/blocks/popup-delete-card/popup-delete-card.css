@@ -1,0 +1,5 @@
+.popup-delete-card {
+display: flex;
+flex-direction: column;
+justify-content: center;
+}

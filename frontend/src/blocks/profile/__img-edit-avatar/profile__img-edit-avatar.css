@@ -1,0 +1,15 @@
+.profile__img-edit-avatar {
+  position: absolute;
+z-index: 1;
+top: 47px;
+left: 47px;
+visibility: hidden;
+
+
+}
+.profile__img-edit-avatar:hover {
+
+content: url('../../../images/logo/carandash.svg');
+z-index: 2;
+visibility: visible;
+}

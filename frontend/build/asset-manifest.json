@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5aa2f7de.css",
+    "main.js": "/static/js/main.95633908.js",
+    "static/js/787.5530211c.chunk.js": "/static/js/787.5530211c.chunk.js",
+    "static/media/Inter-Black.eot": "/static/media/Inter-Black.2efb59279ae163b63cd4.eot",
+    "static/media/Inter-Black.ttf": "/static/media/Inter-Black.143c28420846d45c5834.ttf",
+    "static/media/Inter-Medium.eot": "/static/media/Inter-Medium.57eac33c06a461c47bfb.eot",
+    "static/media/Inter-Medium.ttf": "/static/media/Inter-Medium.6dcbc9bed1ec438907ee.ttf",
+    "static/media/Inter-Regular.eot": "/static/media/Inter-Regular.292f66bfeda308d963ab.eot",
+    "static/media/Inter-Regular.ttf": "/static/media/Inter-Regular.e89cb19905e7db5591b0.ttf",
+    "static/media/Inter-Medium.woff": "/static/media/Inter-Medium.a4e0caae37fa7b7aa339.woff",
+    "static/media/Inter-Black.woff": "/static/media/Inter-Black.c4b5cb2ed62d7848364c.woff",
+    "static/media/Inter-Regular.woff": "/static/media/Inter-Regular.daee4ce12ba065c5d833.woff",
+    "static/media/Inter-Medium.woff2": "/static/media/Inter-Medium.8a50feca5194fae5cc45.woff2",
+    "static/media/Inter-Black.woff2": "/static/media/Inter-Black.51d61d733d65ebf2458a.woff2",
+    "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.6fcad65b7a8f7ffabb8e.woff2",
+    "static/media/Vectorlogowhit.svg": "/static/media/Vectorlogowhit.9acae8482e5b5b17160c46db4e2718a2.svg",
+    "static/media/Vectorserce.svg": "/static/media/Vectorserce.1ad06e85f169668a1f36.svg",
+    "static/media/Trash.svg": "/static/media/Trash.e3c42771bff3aaa52f76.svg",
+    "static/media/UnionNo.svg": "/static/media/UnionNo.d4ce2a261b68c6da973d51ef98afae1a.svg",
+    "static/media/Union.svg": "/static/media/Union.a9eb6caf1da3ff48b215fb1dd9477d74.svg",
+    "static/media/Unionblack.svg": "/static/media/Unionblack.35948469632d0421d697.svg",
+    "index.html": "/index.html",
+    "static/media/Edit-Button.svg": "/static/media/Edit-Button.af236f6cf67005f1d7aa.svg",
+    "static/media/carandash.svg": "/static/media/carandash.ae1a976ddb506239e9f0.svg",
+    "static/media/Close.svg": "/static/media/Close.039f1f5203f653b4bacd.svg",
+    "static/media/Vector+.svg": "/static/media/Vector+.bed8c136e13907f5eefb.svg",
+    "main.5aa2f7de.css.map": "/static/css/main.5aa2f7de.css.map",
+    "main.95633908.js.map": "/static/js/main.95633908.js.map",
+    "787.5530211c.chunk.js.map": "/static/js/787.5530211c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5aa2f7de.css",
+    "static/js/main.95633908.js"
+  ]
+}

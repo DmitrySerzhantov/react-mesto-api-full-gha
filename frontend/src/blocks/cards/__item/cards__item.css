@@ -1,0 +1,16 @@
+.cards__item {
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  overflow: hidden;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .cards__item {
+    margin-top: 16px;
+  }
+}
