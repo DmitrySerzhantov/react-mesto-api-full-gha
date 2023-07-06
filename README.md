@@ -5,12 +5,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/DmitrySerzhantov/react-mesto-api-full-gha.git
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 158.160.47.217
 
-Frontend https://...
+Frontend https://Serzhantov.nomoreparties.sbs
 
-Backend https://...
+Backend https://api.Serzhantov.nomoreparties.sbs
