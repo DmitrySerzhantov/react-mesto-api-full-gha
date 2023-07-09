@@ -11,6 +11,6 @@
 
 IP-адрес 158.160.47.217
 
-Frontend https://Serzhantov.nomoreparties.sbs
+Frontend https://serzhantov.nomoreparties.sbs
 
-Backend https://api.Serzhantov.nomoreparties.sbs
+Backend https://api.serzhantov.nomoreparties.sbs

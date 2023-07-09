@@ -98,7 +98,7 @@ export class Api {
   }
 }
 const api = new Api({
-  url: 'http://localhost:3000/',
+  url: 'https://api.serzhantov.nomoreparties.sbs/',
   credentials: 'include',
   headers: {
     'content-type': 'application/json',
