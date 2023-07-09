@@ -13,7 +13,6 @@ const getUsers = (req, res, next) => {
       res.status(ok).send(users);
     })
     .catch(next);
-  throw new Unauthorized('Неверные данные пользователя');
 };
 
 const getUserById = (req, res, next) => {
