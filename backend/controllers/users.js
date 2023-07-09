@@ -7,11 +7,13 @@ const Unauthorized = require('../errors/Unauthorized');
 const BadRequest = require('../errors/BadRequest');
 
 const getUsers = (req, res, next) => {
-  User.find({})
-    .then((users) => {
-      res.status(ok).send(users);
-    })
-    .catch(next);
+  if (req.user) {
+    User.find({})
+      .then((users) => {
+        res.status(ok).send(users);
+      })
+      .catch(next);
+  } else throw new Unauthorized('Неверные данные пользователя');
 };
 
 const getUserById = (req, res, next) => {
@@ -55,7 +57,7 @@ const login = (req, res, next) => {
               {
                 _id: user.id,
               },
-              'SECRET',
+              'SECRET'
             );
             res.cookie('jwt', jwt, {
               maxAge: 360000,
@@ -100,7 +102,7 @@ const updateUser = async (req, res, next) => {
     {
       returnDocument: 'after',
       runValidators: true,
-    },
+    }
   )
     .then((user) => res.status(ok).send(user))
     .catch((err) => {
@@ -116,7 +118,7 @@ const updateUserAvatar = (req, res, next) => {
   User.findOneAndUpdate(
     { _id: req.user._id },
     { avatar: req.body.avatar },
-    { returnDocument: 'after', runValidators: true },
+    { returnDocument: 'after', runValidators: true }
   )
 
     .then((user) => res.status(ok).send(user))
