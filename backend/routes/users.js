@@ -9,7 +9,7 @@ const {
 } = require('../controllers/users');
 const { regularValidetUrl } = require('../utils/constants');
 
-router.get('/users', getUsers);
+//router.get('/users', getUsers);
 router.get('/user/me', userProfile);
 router.get(
   '/user/:id',
