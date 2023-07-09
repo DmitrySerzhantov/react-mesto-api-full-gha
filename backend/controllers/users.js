@@ -7,13 +7,12 @@ const Unauthorized = require('../errors/Unauthorized');
 const BadRequest = require('../errors/BadRequest');
 
 const getUsers = (req, res, next) => {
-  if (req.user) {
-    User.find({})
-      .then((users) => {
-        res.status(ok).send(users);
-      })
-      .catch(next);
-  } else throw new Unauthorized('Неверные данные пользователя');
+  User.find({})
+    .then((users) => {
+      res.status(ok).send(users);
+    })
+    .catch(next);
+  throw new Unauthorized('Неверные данные пользователя');
 };
 
 const getUserById = (req, res, next) => {
@@ -22,9 +21,7 @@ const getUserById = (req, res, next) => {
       throw new NotFoundError('пользователь с таким ID не найден');
     })
     .then((user) => {
-      if (user) {
-        res.status(ok).send(user);
-      }
+      res.status(ok).send(user);
     })
     .catch(next);
 };
@@ -103,7 +100,7 @@ const updateUser = async (req, res, next) => {
     {
       returnDocument: 'after',
       runValidators: true,
-    }
+    },
   )
     .then((user) => res.status(ok).send(user))
     .catch((err) => {
@@ -119,7 +116,7 @@ const updateUserAvatar = (req, res, next) => {
   User.findOneAndUpdate(
     { _id: req.user._id },
     { avatar: req.body.avatar },
-    { returnDocument: 'after', runValidators: true }
+    { returnDocument: 'after', runValidators: true },
   )
 
     .then((user) => res.status(ok).send(user))

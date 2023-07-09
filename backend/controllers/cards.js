@@ -65,8 +65,9 @@ const likeCard = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequest('Передан не верный формат ID !!!'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
@@ -85,8 +86,9 @@ const dislikeCard = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequest('Передан не верный формат ID !!!'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
