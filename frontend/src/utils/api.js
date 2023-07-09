@@ -5,8 +5,9 @@ export class Api {
   }
 
   getInitialCards() {
-    return fetch(this._url + "cards", {
+    return fetch(this._url + 'cards', {
       headers: this._headers,
+      credentials: 'include',
     }).then((res) => {
       return this._checkStatus(res);
     });
@@ -20,9 +21,10 @@ export class Api {
   }
 
   setInitialNewCard(data) {
-    return fetch(this._url + "cards", {
-      method: "POST",
+    return fetch(this._url + 'cards', {
+      method: 'POST',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         name: data.name,
         link: data.link,
@@ -33,16 +35,18 @@ export class Api {
   }
 
   getUserProfile() {
-    return fetch(this._url + "users/me", {
+    return fetch(this._url + 'user/me', {
       headers: this._headers,
+      credentials: 'include',
     }).then((res) => {
       return this._checkStatus(res);
     });
   }
   setUserProfile(data) {
-    return fetch(this._url + "users/me", {
-      method: "PATCH",
+    return fetch(this._url + 'user/me', {
+      method: 'PATCH',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -53,8 +57,9 @@ export class Api {
   }
   deleteCard(id) {
     return fetch(`${this._url}cards/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: this._headers,
+      credentials: 'include',
     }).then((res) => {
       return this._checkStatus(res);
     });
@@ -62,8 +67,9 @@ export class Api {
 
   likeCard(id) {
     return fetch(`${this._url}cards/${id}/likes`, {
-      method: "PUT",
+      method: 'PUT',
       headers: this._headers,
+      credentials: 'include',
     }).then((res) => {
       return this._checkStatus(res);
     });
@@ -71,16 +77,18 @@ export class Api {
 
   deleteLikeCard(id) {
     return fetch(`${this._url}cards/${id}/likes`, {
-      method: "DELETE",
+      method: 'DELETE',
+      credentials: 'include',
       headers: this._headers,
     }).then((res) => {
       return this._checkStatus(res);
     });
   }
   setUserAvatar(data) {
-    return fetch(this._url + "users/me/avatar", {
-      method: "PATCH",
+    return fetch(this._url + 'user/me/avatar', {
+      method: 'PATCH',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         avatar: data.avatar,
       }),
@@ -90,10 +98,11 @@ export class Api {
   }
 }
 const api = new Api({
-  url: "api.Serzhantov.nomoreparties.sbs",
+  url: 'http://localhost:3000/',
+  credentials: 'include',
   headers: {
-    "content-type": "application/json",
-   // authorization: "fa3f79ad-41aa-4ce4-b408-a913152be61d",
+    'content-type': 'application/json',
+    authorization: 'fa3f79ad-41aa-4ce4-b408-a913152be61d',
   },
 });
 export default api;

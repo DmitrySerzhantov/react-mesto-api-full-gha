@@ -1,21 +1,21 @@
-import Header from "./Header";
-import "../pages/index.css";
-import Main from "./Main";
-import Footer from "./Footer";
-import PopupWithForm from "./PopupWithForm";
-import ImagePopup from "./ImagePopup";
-import { useState, useEffect } from "react";
-import api from "../utils/api.js";
-import EditProfilePopup from "./EditProfilePopup";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import EditAvatarPopup from "./EditAvatarPopup";
-import AddPlacePopup from "./AddPlacePopup";
-import Login from "./Login";
-import Register from "./Register";
-import InfoTooltip from "./InfoTooltip";
-import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
-import ProtectedRoute from "./ProtectedRoute";
-import { checkToken, login, register } from "../utils/auth";
+import Header from './Header';
+import '../pages/index.css';
+import Main from './Main';
+import Footer from './Footer';
+import PopupWithForm from './PopupWithForm';
+import ImagePopup from './ImagePopup';
+import {useState, useEffect} from 'react';
+import api from '../utils/api.js';
+import EditProfilePopup from './EditProfilePopup';
+import {CurrentUserContext} from '../contexts/CurrentUserContext';
+import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
+import Login from './Login';
+import Register from './Register';
+import InfoTooltip from './InfoTooltip';
+import {Route, Routes, Navigate, useNavigate} from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
+import {checkToken, login, register, logout} from '../utils/auth';
 
 function App() {
   const navigate = useNavigate();
@@ -29,10 +29,12 @@ function App() {
   const [isRegesterInfoTooltip, setisRegesterInfoTooltip] = useState(false);
   const [openPopup, setOpenPopup] = useState();
   const [loggedIn, setLoggedIn] = useState(false);
-  const token = localStorage.getItem("token");
-  const [textInfoTooltip, setTextInfoTooltip] = useState("");
+  const userEmail = localStorage.getItem('email');
+
+  const [textInfoTooltip, setTextInfoTooltip] = useState('');
 
   useEffect(() => {
+    console.log();
     if (loggedIn) {
       api
         .getInitialCards()
@@ -47,8 +49,7 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     if (!isLiked) {
       api
         .likeCard(card._id)
@@ -86,7 +87,7 @@ function App() {
   }
 
   useEffect(() => {
-    if (token) {
+    if (userEmail) {
       api
         .getUserProfile()
         .then((res) => {
@@ -95,9 +96,10 @@ function App() {
         .catch((err) => {
           console.log(err);
         });
+
+      tokenCheck();
     }
-    tokenCheck();
-  }, [token]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [loggedIn]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function closeAllPopups() {
     setisEditAvatarPopupOpen(false);
@@ -142,32 +144,29 @@ function App() {
   }
 
   const tokenCheck = () => {
-    if (token) {
-      checkToken(token)
-        .then((user) => {
-          setLoggedIn(user);
-          localStorage.setItem("email", user.data.email);
-          navigate("/");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    checkToken()
+      .then((user) => {
+        localStorage.setItem('email', user.email);
+        setLoggedIn(true);
+        navigate('/');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   function handleLogin(password, email) {
     login(password, email)
       .then((data) => {
-        if (data.token) {
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("email", email);
+        if (data) {
+          localStorage.setItem('email', email);
           setLoggedIn(true);
-          navigate("/");
+          navigate('/');
         }
       })
       .catch((err) => {
         setisRegesterInfoTooltip(false);
-        setTextInfoTooltip("Что-то пошло не так! Попробуйте ещё раз.");
+        setTextInfoTooltip('Что-то пошло не так! Попробуйте ещё раз.');
         setIsInfoTooltipOpen(true);
         console.log(err);
       });
@@ -177,14 +176,14 @@ function App() {
     register(password, email)
       .then((res) => {
         if (res.data) {
-          setTextInfoTooltip("Вы успешно зарегистрировались!");
+          setTextInfoTooltip('Вы успешно зарегистрировались!');
           setisRegesterInfoTooltip(true);
-          navigate("/sign-in");
+          navigate('/sign-in');
         }
         setIsInfoTooltipOpen(true);
       })
       .catch((err) => {
-        setTextInfoTooltip("Что-то пошло не так! Попробуйте ещё раз.");
+        setTextInfoTooltip('Что-то пошло не так! Попробуйте ещё раз.');
         setisRegesterInfoTooltip(false);
         setIsInfoTooltipOpen(true);
 
@@ -193,11 +192,11 @@ function App() {
   }
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
-        <Header />
+      <div className='page'>
+        <Header logout={logout} />
         <Routes>
           <Route
-            path="/"
+            path='/'
             element={
               <ProtectedRoute
                 element={Main}
@@ -216,7 +215,7 @@ function App() {
                   setOpenPopup(e);
                 }}
                 setSelectedCard={(card) => {
-                  setSelectedCard({ value: true, ...card });
+                  setSelectedCard({value: true, ...card});
                 }}
                 loggedIn={loggedIn}
               />
@@ -224,17 +223,17 @@ function App() {
           />
 
           <Route
-            path="/sign-up"
+            path='/sign-up'
             element={<Register onRegister={handleRegister} />}
           />
-          <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
+          <Route path='/sign-in' element={<Login onLogin={handleLogin} />} />
           <Route
-            path="/"
+            path='/'
             element={
               loggedIn ? (
-                <Navigate to={"/"} />
+                <Navigate to={'/'} />
               ) : (
-                <Navigate to={"/sign-in"} replace />
+                <Navigate to={'/sign-in'} replace />
               )
             }
           />
@@ -253,10 +252,10 @@ function App() {
           onClose={closeAllPopups}
         />
         <PopupWithForm
-          id="2"
-          title="Вы уверенны?"
-          name="delete-card"
-          textButton="Да"
+          id='2'
+          title='Вы уверенны?'
+          name='delete-card'
+          textButton='Да'
         ></PopupWithForm>
         <EditAvatarPopup
           openPopup={openPopup}

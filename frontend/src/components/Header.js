@@ -1,42 +1,43 @@
-import { Route, Routes, Link } from "react-router-dom";
-import logo from "../images/logo/Vectorlogowhit.svg";
+import {Route, Routes, Link} from 'react-router-dom';
+import logo from '../images/logo/Vectorlogowhit.svg';
 
-function Header() {
-  const email = localStorage.getItem("email");
+function Header({logout}) {
+  const email = localStorage.getItem('email');
 
   return (
-    <header className="header">
-      <img className="header__logo" src={logo} alt="белый логотип место " />
-      <nav className="header__nav">
-        <p className="header__email">{email ? email : ""}</p>
+    <header className='header'>
+      <img className='header__logo' src={logo} alt='белый логотип место ' />
+      <nav className='header__nav'>
+        <p className='header__email'>{email ? email : ''}</p>
         <button
-          id="header__button"
-          className="header__button"
+          id='header__button'
+          className='header__button'
           onClick={() => {
             localStorage.clear();
+            logout();
           }}
         >
           <Routes>
             <Route
-              path="/sign-up"
+              path='/sign-up'
               element={
-                <Link className="header__button" to="/sign-in">
+                <Link className='header__button' to='/sign-in'>
                   Войти
                 </Link>
               }
             />
             <Route
-              path="/sign-in"
+              path='/sign-in'
               element={
-                <Link className="header__button" to="/sign-up">
+                <Link className='header__button' to='/sign-up'>
                   Регистрация
                 </Link>
               }
             />
             <Route
-              path="/"
+              path='/'
               element={
-                <Link className="header__button" to="/sign-in">
+                <Link className='header__button' to='/sign-in'>
                   Выйти
                 </Link>
               }

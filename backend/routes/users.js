@@ -10,9 +10,9 @@ const {
 const { regularValidetUrl } = require('../utils/constants');
 
 router.get('/users', getUsers);
-router.get('/users/me', userProfile);
+router.get('/user/me', userProfile);
 router.get(
-  '/users/:id',
+  '/user/:id',
   celebrate({
     params: Joi.object()
       .keys({
@@ -24,7 +24,7 @@ router.get(
 );
 
 router.patch(
-  '/users/me',
+  '/user/me',
   celebrate({
     body: Joi.object()
       .keys({
@@ -37,7 +37,7 @@ router.patch(
 );
 
 router.patch(
-  '/users/me/avatar',
+  '/user/me/avatar',
   celebrate({
     body: Joi.object()
       .keys({
