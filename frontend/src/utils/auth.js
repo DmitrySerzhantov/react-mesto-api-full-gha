@@ -39,7 +39,7 @@ export const logout = (password, email) => {
 };
 
 export const checkToken = () => {
-  return fetch(`${BASE_URL}/user/me`, {
+  return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     credentials: 'include',
     headers: {

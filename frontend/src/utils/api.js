@@ -35,7 +35,7 @@ export class Api {
   }
 
   getUserProfile() {
-    return fetch(this._url + 'user/me', {
+    return fetch(this._url + 'users/me', {
       headers: this._headers,
       credentials: 'include',
     }).then((res) => {
@@ -43,7 +43,7 @@ export class Api {
     });
   }
   setUserProfile(data) {
-    return fetch(this._url + 'user/me', {
+    return fetch(this._url + 'users/me', {
       method: 'PATCH',
       headers: this._headers,
       credentials: 'include',
@@ -85,7 +85,7 @@ export class Api {
     });
   }
   setUserAvatar(data) {
-    return fetch(this._url + 'user/me/avatar', {
+    return fetch(this._url + 'users/me/avatar', {
       method: 'PATCH',
       headers: this._headers,
       credentials: 'include',

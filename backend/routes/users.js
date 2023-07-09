@@ -9,8 +9,8 @@ const {
 } = require('../controllers/users');
 const { regularValidetUrl } = require('../utils/constants');
 
-//router.get('/users', getUsers);
-router.get('/user/me', userProfile);
+router.get('/users', getUsers);
+router.get('/users/me', userProfile);
 router.get(
   '/user/:id',
   celebrate({
@@ -24,7 +24,7 @@ router.get(
 );
 
 router.patch(
-  '/user/me',
+  '/users/me',
   celebrate({
     body: Joi.object()
       .keys({
@@ -37,7 +37,7 @@ router.patch(
 );
 
 router.patch(
-  '/user/me/avatar',
+  '/users/me/avatar',
   celebrate({
     body: Joi.object()
       .keys({
