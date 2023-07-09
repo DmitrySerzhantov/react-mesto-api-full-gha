@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Card = require('../models/card');
 const NotFoundError = require('../errors/NotFoundError');
 const Forbidden = require('../errors/Forbidden');
@@ -18,7 +19,7 @@ const createCard = (req, res, next) => {
   })
     .then((card) => res.status(created).send(card))
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err instanceof mongoose.Error) {
         next(new BadRequest('Переданы некорректные данные поля карточки!!!'));
       } else {
         next(err);
@@ -42,7 +43,7 @@ const deleteCard = (req, res, next) => {
       }
     })
     .catch((err) => {
-      if (err.name === 'CastError') {
+      if (err instanceof mongoose.Error) {
         next(new BadRequest('Передан не верный формат ID !!!'));
       } else {
         next(err);
@@ -63,7 +64,7 @@ const likeCard = (req, res, next) => {
       throw new NotFoundError('Карточка не найденa !!!');
     })
     .catch((err) => {
-      if (err.name === 'CastError') {
+      if (err instanceof mongoose.Error) {
         next(new BadRequest('Передан не верный формат ID !!!'));
       } else {
         next(err);
@@ -84,7 +85,7 @@ const dislikeCard = (req, res, next) => {
       throw new NotFoundError('Карточка не найденa !!!');
     })
     .catch((err) => {
-      if (err.name === 'CastError') {
+      if (err instanceof mongoose.Error) {
         next(new BadRequest('Передан не верный формат ID !!!'));
       } else {
         next(err);

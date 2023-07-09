@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
 const jsonWebToken = require('jsonwebtoken');
 const User = require('../models/user');
 const { ok, created } = require('../utils/constants');
@@ -104,7 +105,7 @@ const updateUser = async (req, res, next) => {
   )
     .then((user) => res.status(ok).send(user))
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err instanceof mongoose.Error) {
         next(new BadRequest('Переданы некорректные данные пользователя!!!'));
       } else {
         next(err);
@@ -122,7 +123,7 @@ const updateUserAvatar = (req, res, next) => {
     .then((user) => res.status(ok).send(user))
 
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err instanceof mongoose.Error) {
         next(new BadRequest(err.message));
       } else {
         next(err);
