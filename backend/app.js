@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi, errors } = require('celebrate');
+const cors = require('cors');
 const router = require('./routes');
 const { createUser, login, logout } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/error');
 const { regularValidetUrl } = require('./utils/constants');
-const cors = require('cors');
 
 // Слушаем 3000 порт
 const { PORT = 3000 } = process.env;
@@ -37,7 +37,7 @@ app.post(
       avatar: Joi.string().pattern(regularValidetUrl),
     }),
   }),
-  createUser
+  createUser,
 );
 app.post(
   '/signin',
@@ -47,7 +47,7 @@ app.post(
       password: Joi.string().required().min(2),
     }),
   }),
-  login
+  login,
 );
 app.post('/logout', logout);
 app.use(auth);
