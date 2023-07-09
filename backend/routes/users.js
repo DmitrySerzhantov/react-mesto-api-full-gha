@@ -12,7 +12,7 @@ const { regularValidetUrl } = require('../utils/constants');
 router.get('/users', getUsers);
 router.get('/users/me', userProfile);
 router.get(
-  '/user/:id',
+  '/users/:id',
   celebrate({
     params: Joi.object()
       .keys({
