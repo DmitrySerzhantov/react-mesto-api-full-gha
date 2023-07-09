@@ -53,11 +53,12 @@ const login = (req, res, next) => {
         .compare(String(password), user.password)
         .then((isValidUser) => {
           if (isValidUser) {
+            const { NODE_ENV, JWT_SECRET } = process.env;
             const jwt = jsonWebToken.sign(
               {
                 _id: user.id,
               },
-              'SECRET',
+              NODE_ENV === 'production' ? JWT_SECRET : 'SECRET',
             );
             res.cookie('jwt', jwt, {
               maxAge: 360000,
@@ -102,7 +103,7 @@ const updateUser = async (req, res, next) => {
     {
       returnDocument: 'after',
       runValidators: true,
-    },
+    }
   )
     .then((user) => res.status(ok).send(user))
     .catch((err) => {
@@ -118,7 +119,7 @@ const updateUserAvatar = (req, res, next) => {
   User.findOneAndUpdate(
     { _id: req.user._id },
     { avatar: req.body.avatar },
-    { returnDocument: 'after', runValidators: true },
+    { returnDocument: 'after', runValidators: true }
   )
 
     .then((user) => res.status(ok).send(user))
