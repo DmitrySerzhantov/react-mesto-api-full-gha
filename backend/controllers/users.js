@@ -8,6 +8,7 @@ const BadRequest = require('../errors/BadRequest');
 
 const getUsers = (req, res, next) => {
   User.find({})
+    .orFail(() => new Unauthorized('Неверные данные пользователя'))
     .then((users) => {
       res.status(ok).send(users);
     })
