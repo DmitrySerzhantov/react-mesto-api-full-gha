@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.47.217
+IP-адрес https://158.160.47.217
 
 Frontend https://serzhantov.nomoreparties.sbs
 
